@@ -1,10 +1,7 @@
-## Hi there 👋
-
+## Hi there 👋, I'm Rishabh Agrawal
 <!--
 **RISHABHAGRAWALZRA/rishabhagrawalzra** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
 Here are some ideas to get you started:
-
 - 🔭 I’m currently working on ...
 - 🌱 I’m currently learning ...
 - 👯 I’m looking to collaborate on ...
@@ -14,3 +11,8 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+- 🔭 I’m currently working as blockchain engineer at Avail
+- 🧑‍💻 I worked on various leading rollup stack (like Arbitrum, Optimism, Polygon CDK and Sovereign SDK)
+- 🛠️ Tech Stack: Golang, Rust, Solidity, with deep experience in OP-Stack, Arbitrum Nitro, and Polygon CDK**
+- 🌱 I love learning new concepts of blockchain
