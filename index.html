@@ -1,773 +1,1010 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rishabh Agrawal — Blockchain Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0c0c0e;
-    --surface: #131316;
-    --border: #222228;
-    --text: #e8e6e0;
-    --muted: #6b6a72;
-    --accent: #d4a843;
-    --accent-dim: #3d2f0e;
-    --green: #4ade80;
-    --tag-bg: #1a1a1f;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Fraunces', Georgia, serif;
-    font-size: 15px;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
-
-  /* Grain overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 100;
-    opacity: 0.4;
-  }
-
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 60px 40px 80px;
-  }
-
-  /* ── HEADER ── */
-  header {
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 48px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 24px;
-    align-items: end;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .name {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2.4rem, 6vw, 4rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    color: var(--text);
-  }
-
-  .name span {
-    color: var(--accent);
-  }
-
-  .title-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    font-weight: 400;
-    color: var(--muted);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .title-tag::before {
-    content: '';
-    width: 20px;
-    height: 1px;
-    background: var(--accent);
-    display: inline-block;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 6px;
-  }
-
-  .contact-links a {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11.5px;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .contact-links a:hover { color: var(--accent); }
-
-  .contact-links a::after {
-    content: '↗';
-    font-size: 10px;
-    opacity: 0.5;
-  }
-
-  /* ── SUMMARY ── */
-  .summary {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    padding: 24px 28px;
-    margin-bottom: 52px;
-    font-size: 14.5px;
-    color: #c0bdb5;
-    line-height: 1.8;
-    font-style: italic;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-
-  /* ── SECTION ── */
-  section {
-    margin-bottom: 52px;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  section:nth-child(3) { animation-delay: 0.15s; }
-  section:nth-child(4) { animation-delay: 0.2s; }
-  section:nth-child(5) { animation-delay: 0.25s; }
-  section:nth-child(6) { animation-delay: 0.3s; }
-  section:nth-child(7) { animation-delay: 0.35s; }
-
-  .section-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* ── JOB ── */
-  .job { margin-bottom: 36px; }
-  .job:last-child { margin-bottom: 0; }
-
-  .job-header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: start;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  .company {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--text);
-    letter-spacing: -0.01em;
-  }
-
-  .company a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent-dim);
-    transition: border-color 0.2s;
-  }
-
-  .company a:hover { border-color: var(--accent); }
-
-  .role {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 3px;
-    letter-spacing: 0.05em;
-  }
-
-  .period {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    white-space: nowrap;
-    background: var(--tag-bg);
-    border: 1px solid var(--border);
-    padding: 3px 10px;
-    border-radius: 2px;
-  }
-
-  /* ── BULLETS ── */
-  .bullets { list-style: none; }
-
-  .bullets li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #b8b5ae;
-    line-height: 1.75;
-  }
-
-  .bullets li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-size: 10px;
-    top: 5px;
-  }
-
-  .bullets li strong {
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 13.5px;
-    color: var(--text);
-    font-style: normal;
-  }
-
-  .bullets a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent-dim);
-    transition: border-color 0.2s;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-  }
-
-  .bullets a:hover { border-color: var(--accent); }
-
-  /* ── ROLLUP SUB-LIST ── */
-  .stack-list {
-    list-style: none;
-    margin-top: 10px;
-    display: grid;
-    gap: 6px;
-  }
-
-  .stack-list li {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11.5px;
-    color: var(--muted);
-    padding-left: 20px;
-    position: relative;
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .stack-list li::before {
-    content: '·';
-    position: absolute;
-    left: 6px;
-    color: var(--accent);
-  }
-
-  .stack-name {
-    font-weight: 500;
-    color: #9a9098;
-    min-width: 120px;
-  }
-
-  .stack-list a {
-    color: #5a7fa8;
-    text-decoration: none;
-    font-size: 11px;
-    transition: color 0.2s;
-    border-bottom: 1px solid transparent;
-  }
-
-  .stack-list a:hover { color: var(--accent); border-color: var(--accent-dim); }
-
-  /* ── L2 BEAT BADGES ── */
-  .l2-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 8px;
-  }
-
-  .l2-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    background: var(--accent-dim);
-    border: 1px solid #5a3d14;
-    padding: 3px 10px;
-    border-radius: 2px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    color: var(--accent);
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-
-  .l2-badge:hover { background: #4d3410; }
-
-  .l2-badge::before { content: '↗'; font-size: 9px; }
-
-  /* ── OSS GRID ── */
-  .oss-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .oss-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 20px;
-    transition: border-color 0.2s;
-  }
-
-  .oss-card:hover { border-color: #333340; }
-
-  .oss-card-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12.5px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  .oss-card-title a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .oss-card-title a:hover { color: var(--accent); }
-
-  .oss-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 10px;
-  }
-
-  .oss-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    color: var(--muted);
-    background: var(--tag-bg);
-    border: 1px solid var(--border);
-    padding: 2px 7px;
-    border-radius: 1px;
-    letter-spacing: 0.05em;
-  }
-
-  .oss-desc {
-    font-size: 12.5px;
-    color: #8a8890;
-    line-height: 1.65;
-  }
-
-  .oss-desc a {
-    color: #5a7fa8;
-    text-decoration: none;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    transition: color 0.2s;
-  }
-
-  .oss-desc a:hover { color: var(--accent); }
-
-  .upstream-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: rgba(74, 222, 128, 0.08);
-    border: 1px solid rgba(74, 222, 128, 0.2);
-    padding: 1px 7px;
-    border-radius: 2px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    color: var(--green);
-    text-decoration: none;
-    vertical-align: middle;
-    margin-left: 4px;
-  }
-
-  /* ── SKILLS ── */
-  .skills-grid {
-    display: grid;
-    gap: 12px;
-  }
-
-  .skill-row {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 16px;
-    align-items: start;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .skill-row:last-child { border-bottom: none; }
-
-  .skill-cat {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    text-transform: uppercase;
-    padding-top: 3px;
-  }
-
-  .skill-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .skill-pill {
-    background: var(--tag-bg);
-    border: 1px solid var(--border);
-    padding: 4px 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: #a0a0aa;
-    border-radius: 1px;
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .skill-pill:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  .skill-pill.highlight {
-    border-color: #333;
-    color: var(--text);
-  }
-
-  /* ── EDUCATION ── */
-  .edu-block {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 20px 24px;
-  }
-
-  .edu-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--text);
-  }
-
-  .edu-degree {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 4px;
-    font-style: italic;
-  }
-
-  .edu-meta {
-    text-align: right;
-  }
-
-  .edu-period {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  .edu-cgpa {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--accent);
-    margin-top: 4px;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── PRINT ── */
-  @media print {
-    body { background: white; color: black; font-size: 13px; }
-    body::before { display: none; }
-    .container { padding: 20px; }
-    .skill-pill, .oss-card, .summary, .edu-block { border-color: #ccc; }
-    a { color: inherit; }
-  }
-
-  @media (max-width: 640px) {
-    .container { padding: 32px 20px; }
-    header { grid-template-columns: 1fr; }
-    .contact-links { align-items: flex-start; }
-    .oss-grid { grid-template-columns: 1fr; }
-    .skill-row { grid-template-columns: 1fr; gap: 8px; }
-    .job-header { grid-template-columns: 1fr; }
-    .edu-block { grid-template-columns: 1fr; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rishabh Agrawal — Senior Software Engineer</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;1,300&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0c0e;
+      --surface: #131316;
+      --border: #222228;
+      --text: #e8e6e0;
+      --muted: #6b6a72;
+      --accent: #d4a843;
+      --accent-dim: #3d2f0e;
+      --green: #4ade80;
+      --tag-bg: #1a1a1f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.4;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .name span {
+      color: var(--accent);
+    }
+
+    .title-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .title-tag::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    /* FIX 4: "open to work" badge */
+    .open-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      background: rgba(74, 222, 128, 0.08);
+      border: 1px solid rgba(74, 222, 128, 0.25);
+      padding: 4px 12px;
+      border-radius: 2px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--green);
+      letter-spacing: 0.08em;
+    }
+
+    .open-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      display: inline-block;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .contact-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-links a:hover {
+      color: var(--accent);
+    }
+
+    .contact-links a::after {
+      content: '↗';
+      font-size: 10px;
+      opacity: 0.5;
+    }
+
+    /* FIX 5: download CV link — no arrow suffix */
+    .contact-links a.dl-cv {
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+      padding: 3px 10px;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .contact-links a.dl-cv:hover {
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    .contact-links a.dl-cv::after {
+      content: '↓';
+    }
+
+    /* ── SUMMARY ── */
+    .summary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 24px 28px;
+      margin-bottom: 52px;
+      font-size: 14.5px;
+      color: #c0bdb5;
+      line-height: 1.8;
+      font-style: italic;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    /* ── SECTION ── */
+    section {
+      margin-bottom: 52px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    section:nth-child(3) {
+      animation-delay: 0.15s;
+    }
+
+    section:nth-child(4) {
+      animation-delay: 0.2s;
+    }
+
+    section:nth-child(5) {
+      animation-delay: 0.25s;
+    }
+
+    section:nth-child(6) {
+      animation-delay: 0.3s;
+    }
+
+    section:nth-child(7) {
+      animation-delay: 0.35s;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── JOB ── */
+    .job {
+      margin-bottom: 36px;
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .company {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .company a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-dim);
+      transition: border-color 0.2s;
+    }
+
+    .company a:hover {
+      border-color: var(--accent);
+    }
+
+    .role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+      letter-spacing: 0.05em;
+    }
+
+    .period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+
+    /* ── BULLETS ── */
+    .bullets {
+      list-style: none;
+    }
+
+    .bullets li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #b8b5ae;
+      line-height: 1.75;
+    }
+
+    .bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 10px;
+      top: 5px;
+    }
+
+    .bullets li strong {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 13.5px;
+      color: var(--text);
+      font-style: normal;
+    }
+
+    .bullets a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-dim);
+      transition: border-color 0.2s;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+
+    .bullets a:hover {
+      border-color: var(--accent);
+    }
+
+    /* ── ROLLUP SUB-LIST ── */
+    .stack-list {
+      list-style: none;
+      margin-top: 10px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .stack-list li {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--muted);
+      padding-left: 20px;
+      position: relative;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .stack-list li::before {
+      content: '·';
+      position: absolute;
+      left: 6px;
+      color: var(--accent);
+    }
+
+    .stack-name {
+      font-weight: 500;
+      color: #9a9098;
+      min-width: 120px;
+    }
+
+    .stack-list a {
+      color: #5a7fa8;
+      text-decoration: none;
+      font-size: 11px;
+      transition: color 0.2s;
+      border-bottom: 1px solid transparent;
+    }
+
+    .stack-list a:hover {
+      color: var(--accent);
+      border-color: var(--accent-dim);
+    }
+
+    /* ── L2 BEAT BADGES ── */
+    .l2-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .l2-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent-dim);
+      border: 1px solid #5a3d14;
+      padding: 3px 10px;
+      border-radius: 2px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--accent);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .l2-badge:hover {
+      background: #4d3410;
+    }
+
+    .l2-badge::before {
+      content: '↗';
+      font-size: 9px;
+    }
+
+    /* ── OSS GRID ── */
+    .oss-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .oss-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .oss-card:hover {
+      border-color: #333340;
+    }
+
+    .oss-card-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .oss-card-title a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .oss-card-title a:hover {
+      color: var(--accent);
+    }
+
+    .oss-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .oss-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      color: var(--muted);
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+      border-radius: 1px;
+      letter-spacing: 0.05em;
+    }
+
+    .oss-desc {
+      font-size: 12.5px;
+      color: #8a8890;
+      line-height: 1.65;
+    }
+
+    .oss-desc a {
+      color: #5a7fa8;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      transition: color 0.2s;
+    }
+
+    .oss-desc a:hover {
+      color: var(--accent);
+    }
+
+    .upstream-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(74, 222, 128, 0.08);
+      border: 1px solid rgba(74, 222, 128, 0.2);
+      padding: 1px 7px;
+      border-radius: 2px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--green);
+      text-decoration: none;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-row:last-child {
+      border-bottom: none;
+    }
+
+    .skill-cat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+      padding-top: 3px;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-pill {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #a0a0aa;
+      border-radius: 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .skill-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .skill-pill.highlight {
+      border-color: #333;
+      color: var(--text);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-block {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+    }
+
+    .edu-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .edu-degree {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .edu-meta {
+      text-align: right;
+    }
+
+    .edu-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .edu-cgpa {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      margin-top: 4px;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body {
+        background: white;
+        color: black;
+        font-size: 13px;
+      }
+
+      body::before {
+        display: none;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .skill-pill,
+      .oss-card,
+      .summary,
+      .edu-block {
+        border-color: #ccc;
+      }
+
+      a {
+        color: inherit;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 32px 20px;
+      }
+
+      header {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-links {
+        align-items: flex-start;
+      }
+
+      .oss-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .job-header {
+        grid-template-columns: 1fr;
+      }
+
+      .edu-block {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="container">
+  <div class="container">
 
-  <!-- HEADER -->
-  <header>
-    <div>
-      <div class="name">Rishabh <span>Agrawal</span></div>
-      <div class="title-tag">Blockchain Engineer · Rollup Infrastructure · DA Layer</div>
-    </div>
-    <div class="contact-links">
-      <a href="mailto:rishabhagrawalzra@gmail.com">rishabhagrawalzra@gmail.com</a>
-      <a href="https://www.linkedin.com/in/rishabhagrawalzra/">LinkedIn</a>
-      <a href="https://github.com/RISHABHAGRAWALZRA">GitHub</a>
-      <a href="https://x.com/rsh_agrawal">X / Twitter</a>
-      <a href="tel:+918989436401">+91 89894 36401</a>
-    </div>
-  </header>
-
-  <!-- SUMMARY -->
-  <div class="summary">
-    Blockchain Engineer with 2+ years of production experience designing and shipping DA layer integrations across 5 major rollup stacks — OP-Stack, Arbitrum Nitro, Polygon CDK, ZK Sync Era, and Sovereign SDK. Core contributor at Avail with upstream PRs merged into OffchainLabs/nitro and Sovereign-Labs/sovereign-sdk. Work adopted by live production chains including Sophon, Lens, Space and Time (SxT), Soon, Rooch, Nexus Network, and Ternoa, all verified on L2Beat. Proficient in Golang, Rust, and Solidity; experienced in zero-knowledge proof systems, threshold signature schemes, WASM runtimes, and cross-chain protocol design.
-  </div>
-
-  <!-- EXPERIENCE -->
-  <section>
-    <div class="section-label">Experience</div>
-
-    <!-- Avail -->
-    <div class="job">
-      <div class="job-header">
-        <div>
-          <div class="company"><a href="https://www.availproject.org/">Avail Project</a></div>
-          <div class="role">Integration Engineer · Remote, India</div>
-        </div>
-        <div class="period">Aug 2023 — Present</div>
-      </div>
-      <ul class="bullets">
-
-        <li>
-          <strong>Rollup Integrations</strong> — Designed and implemented Avail DA adapters across leading rollup stacks, enabling rollups to replace Ethereum calldata with Avail DA through pluggable interfaces.
-          <ul class="stack-list" style="margin-top:12px;">
-            <li><span class="stack-name">OP-Stack</span>
-              <a href="https://github.com/availproject/avail-op-stack-adapter/tree/avail-develop">avail-op-stack-adapter</a>
-              <a href="https://docs.availproject.org/docs/build-with-avail/deploy-rollup-on-avail/Optimium/op-stack/op-stack">docs</a>
-            </li>
-            <li><span class="stack-name">Arbitrum Nitro</span>
-              <a href="https://github.com/availproject/avail-nitro-adapter/tree/avail-nitro-node-v2-upstream-v3.2.1">avail-nitro-adapter</a>
-              <a href="https://github.com/availproject/nitro-contracts">nitro-contracts</a>
-              <a href="https://docs.availproject.org/docs/build-with-avail/deploy-rollup-on-avail/Optimium/arbitrum-nitro/nitro-stack">docs</a>
-            </li>
-            <li><span class="stack-name">Polygon CDK</span>
-              <a href="https://github.com/availproject/cdk">cdk</a>
-              <a href="https://github.com/availproject/cdk-zkevm-contracts">cdk-zkevm-contracts</a>
-              <a href="https://github.com/availproject/kurtosis-cdk">kurtosis-cdk</a>
-            </li>
-            <li><span class="stack-name">ZK Sync Era</span>
-              <a href="https://github.com/availproject/zksync-era">zksync-era</a>
-              <a href="https://github.com/availproject/era-contracts">era-contracts</a>
-            </li>
-            <li><span class="stack-name">Sovereign SDK</span>
-              <a href="https://github.com/availproject/avail-sovereign-sdk/tree/avail-develop">avail-sovereign-sdk</a>
-            </li>
-          </ul>
-        </li>
-
-        <li>
-          <strong>Upstream Protocol Contributions</strong> — Core DA interface changes merged upstream into canonical repositories:
-          <a href="https://github.com/OffchainLabs/nitro/pull/2666">OffchainLabs/nitro #2666</a> and
-          <a href="https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709">Sovereign-Labs/sovereign-sdk #1709</a> — enabling modular DA support without forking base protocol implementations.
-        </li>
-
-        <li>
-          <strong>Production Rollup Adoption</strong> — Built DA integration and Solidity verifier contracts enabling Avail DA attestations in the proof settlement pipeline. Adopted by:
-          <div class="l2-badges" style="margin-top:8px;">
-            <a class="l2-badge" href="https://l2beat.com/scaling/projects/sxt#contracts">Space and Time (SxT)</a>
-            <a class="l2-badge" href="https://l2beat.com/scaling/projects/sophon">Sophon</a>
-            <a class="l2-badge" href="https://l2beat.com/scaling/projects/lens">Lens</a>
-          </div>
-        </li>
-
-        <li>
-          <strong>Smart Contract Infrastructure</strong> — Implemented Solidity verifier contracts across Arbitrum Nitro, Polygon CDK, and ZK Sync Era (diamond proxy architecture) to validate Avail DA commitments within rollup settlement pipelines.
-        </li>
-
-        <li>
-          <strong>Chain Abstraction — Avail Nexus</strong> — Extended the Validator Service Client (VSC) in <a href="https://github.com/availproject/ca-node">ca-node</a>, a Go-based HTTP/WebSocket backend supporting cross-chain operations: balance queries, fee grants, RFF publishing, sponsored approvals, SBC transactions, and distributed signature generation (TSS) with secp256k1 and ed25519.
-        </li>
-
-        <li>
-          <strong>Browser Light Client (WASM)</strong> — Ported core DA sampling and block verification logic from the <a href="https://github.com/availproject/avail-light/tree/main">Avail light client</a> into a WASM module, enabling browser-native data availability verification without running a native binary.
-        </li>
-
-      </ul>
-    </div>
-
-    <!-- Polygon Labs -->
-    <div class="job">
-      <div class="job-header">
-        <div>
-          <div class="company">Polygon Labs</div>
-          <div class="role">Backend Engineer · Remote, India</div>
-        </div>
-        <div class="period">Dec 2022 — Aug 2023</div>
-      </div>
-      <ul class="bullets">
-        <li>
-          <strong>Polygon PoS Open APIs</strong> — Implemented and hardened validation logic for public-facing Polygon PoS APIs in NodeJS, covering malformed inputs and rate limits. Wrote unit tests with Mocha/Chai and ran K6 load simulations, identifying bottlenecks under high-concurrency traffic.
-        </li>
-        <li>
-          <strong>Watchgod — Real-time Transaction Monitoring</strong> — Designed and built a real-time transaction status service using NodeJS, MongoDB, Redis, and Blocknative Webhooks. Reduced user-visible confirmation latency by replacing polling with event-driven updates.
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- OPEN SOURCE -->
-  <section>
-    <div class="section-label">Open Source Contributions</div>
-    <div class="oss-grid">
-
-      <div class="oss-card">
-        <div class="oss-card-title"><a href="https://github.com/availproject/avail-op-stack-adapter">avail-op-stack-adapter</a></div>
-        <div class="oss-tags"><span class="oss-tag">Golang</span><span class="oss-tag">Solidity</span><span class="oss-tag">OP-Stack</span></div>
-        <div class="oss-desc">Pluggable DA adapter for OP-Stack rollups to switch from Ethereum calldata to Avail DA. Implements OP-Stack's <code style="font-family: JetBrains Mono; font-size:11px; color: #7a7a88;">AltDA</code> interface with Avail-native block submission and commitment retrieval.</div>
-      </div>
-
-      <div class="oss-card">
-        <div class="oss-card-title"><a href="https://github.com/availproject/avail-nitro-adapter">avail-nitro-adapter</a></div>
-        <div class="oss-tags"><span class="oss-tag">Golang</span><span class="oss-tag">Solidity</span><span class="oss-tag">Arbitrum Nitro</span></div>
-        <div class="oss-desc">DA adapter replacing the Ethereum AnyTrust committee with Avail DA for Orbit chains. Includes on-chain verifier contracts in <a href="https://github.com/availproject/nitro-contracts">nitro-contracts</a> and orbit-actions for automated deployment.
-        <a class="upstream-badge" href="https://github.com/OffchainLabs/nitro/pull/2666">merged upstream ↗</a></div>
-      </div>
-
-      <div class="oss-card">
-        <div class="oss-card-title"><a href="https://github.com/availproject/cdk">cdk (Polygon CDK)</a></div>
-        <div class="oss-tags"><span class="oss-tag">Golang</span><span class="oss-tag">Solidity</span><span class="oss-tag">ZK-EVM</span></div>
-        <div class="oss-desc">Extended Polygon CDK's DA module for validium chains. Wrote <a href="https://github.com/availproject/cdk-zkevm-contracts">cdk-zkevm-contracts</a> Solidity contracts to register Avail DA commitments within the ZK-EVM proof settlement system.</div>
-      </div>
-
-      <div class="oss-card">
-        <div class="oss-card-title"><a href="https://github.com/availproject/zksync-era">zksync-era</a></div>
-        <div class="oss-tags"><span class="oss-tag">Rust</span><span class="oss-tag">Solidity</span><span class="oss-tag">ZK Sync Era</span></div>
-        <div class="oss-desc">Modified ZK Sync Era's sequencer and proof pipeline to post DA to Avail. Extended <a href="https://github.com/availproject/era-contracts">era-contracts</a> (diamond proxy architecture) for on-chain DA attestation verification. Adopted by SxT, Sophon, and Lens.</div>
-      </div>
-
-      <div class="oss-card">
-        <div class="oss-card-title"><a href="https://github.com/availproject/avail-sovereign-sdk">avail-sovereign-sdk</a></div>
-        <div class="oss-tags"><span class="oss-tag">Rust</span><span class="oss-tag">Sovereign SDK</span></div>
-        <div class="oss-desc">Avail DA adapter for Sovereign SDK rollups in Rust, enabling sovereign ZK rollups to use Avail's erasure-coded DA without a settlement layer dependency.
-        <a class="upstream-badge" href="https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709">merged upstream ↗</a></div>
-      </div>
-
-      <div class="oss-card">
-        <div class="oss-card-title"><a href="https://github.com/availproject/ca-node">ca-node (Avail Nexus)</a></div>
-        <div class="oss-tags"><span class="oss-tag">Golang</span><span class="oss-tag">TSS</span><span class="oss-tag">WebSocket</span></div>
-        <div class="oss-desc">Core node for Avail's Nexus chain abstraction protocol. Extended the VSC backend for cross-chain operations including fee grants, RFF publishing, and threshold signature generation (secp256k1 / ed25519).</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section>
-    <div class="section-label">Technical Skills</div>
-    <div class="skills-grid">
-      <div class="skill-row">
-        <div class="skill-cat">Languages</div>
-        <div class="skill-items">
-          <span class="skill-pill highlight">Golang</span>
-          <span class="skill-pill highlight">Rust</span>
-          <span class="skill-pill highlight">Solidity</span>
-          <span class="skill-pill">TypeScript</span>
-          <span class="skill-pill">JavaScript</span>
-        </div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-cat">Rollup Infrastructure</div>
-        <div class="skill-items">
-          <span class="skill-pill highlight">OP-Stack</span>
-          <span class="skill-pill highlight">Arbitrum Nitro</span>
-          <span class="skill-pill highlight">Polygon CDK</span>
-          <span class="skill-pill highlight">ZK Sync Era</span>
-          <span class="skill-pill">Sovereign SDK</span>
-        </div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-cat">Blockchain Systems</div>
-        <div class="skill-items">
-          <span class="skill-pill">go-ethereum (Geth)</span>
-          <span class="skill-pill">libp2p</span>
-          <span class="skill-pill">gRPC</span>
-          <span class="skill-pill">Substrate</span>
-        </div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-cat">ZK & Cryptography</div>
-        <div class="skill-items">
-          <span class="skill-pill">KZG commitments</span>
-          <span class="skill-pill">Erasure coding</span>
-          <span class="skill-pill">ZK-EVM architecture</span>
-          <span class="skill-pill">TSS / secp256k1 / ed25519</span>
-          <span class="skill-pill">WASM</span>
-        </div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-cat">Smart Contracts</div>
-        <div class="skill-items">
-          <span class="skill-pill highlight">Solidity</span>
-          <span class="skill-pill">Foundry</span>
-          <span class="skill-pill">Hardhat</span>
-          <span class="skill-pill">Diamond Proxy (EIP-2535)</span>
-          <span class="skill-pill">OpenZeppelin</span>
-        </div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-cat">Infrastructure</div>
-        <div class="skill-items">
-          <span class="skill-pill">Docker</span>
-          <span class="skill-pill">Kurtosis</span>
-          <span class="skill-pill">Redis</span>
-          <span class="skill-pill">MongoDB</span>
-          <span class="skill-pill">Kafka</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section>
-    <div class="section-label">Education</div>
-    <div class="edu-block">
+    <!-- HEADER -->
+    <header>
       <div>
-        <div class="edu-name">ABV-IIITM Gwalior</div>
-        <div class="edu-degree">B.Tech (IT) + MBA Integrated Program · Gwalior, India</div>
+        <div class="name">Rishabh <span>Agrawal</span></div>
+        <!-- FIX 1: added one-line hook -->
+        <div class="title-tag">Senior Software Engineer · Backend &amp; Blockchain Infrastructure · DA Layer</div>
+        <!-- FIX 4: open to work badge -->
+        <div class="open-badge">Open to new roles &nbsp;·&nbsp; Remote</div>
       </div>
-      <div class="edu-meta">
-        <div class="edu-period">2018 — 2023</div>
-        <div class="edu-cgpa">CGPA 7.4 / 10</div>
+      <div class="contact-links">
+        <!-- FIX 5: download CV link -->
+        <a href="/resume.pdf" class="dl-cv">Download CV</a>
+        <a href="mailto:rishabhagrawalzra@gmail.com">rishabhagrawalzra@gmail.com</a>
+        <a href="https://www.linkedin.com/in/rishabhagrawalzra/">LinkedIn</a>
+        <a href="https://github.com/RISHABHAGRAWALZRA">GitHub</a>
+        <a href="https://x.com/rsh_agrawal">X / Twitter</a>
+        <a href="tel:+918989436401">+91 89894 36401</a>
       </div>
-    </div>
-  </section>
+    </header>
 
-</div>
+    <!-- SUMMARY -->
+    <!-- FIX 2: "2+ years" → "4+ years" -->
+    <div class="summary">
+      Senior software engineer with 4+ years building production backend and blockchain infrastructure in Go, Rust, and
+      TypeScript — owning architecture, implementation, and production reliability end-to-end. Designed systems
+      sustaining 11,000 TPS (1B+ transactions/day), shipped protocol-level integrations across OP-Stack, Arbitrum Nitro,
+      Polygon CDK, ZK Sync Era, and Sovereign SDK adopted by 7+ production L2s, and contributed upstream changes merged
+      directly into OffchainLabs/nitro and Sovereign-Labs/sovereign-sdk. Operates comfortably at every layer —
+      distributed Go backends, Rust sequencer internals, ZK proof pipelines, Solidity settlement contracts, and
+      cross-chain cryptographic signing systems.
+    </div>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <div class="section-label">Experience</div>
+
+      <!-- Avail -->
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="company"><a href="https://www.availproject.org/">Avail Project</a></div>
+            <div class="role">Senior Software Engineer — Backend &amp; Blockchain Infrastructure · Remote, India</div>
+          </div>
+          <!-- FIX 3: "Present" → "Mar 2026" -->
+          <div class="period">Aug 2023 — Mar 2026</div>
+        </div>
+        <ul class="bullets">
+
+          <li>
+            <strong>High-Throughput EVM Pipeline — 11K TPS / 1B tx/day</strong> — Owned end-to-end design and
+            implementation of a large-scale EVM benchmarking system: architected orchestration to spin up and manage a
+            distributed fleet of EVM chains, built a concurrent transaction generation system sustaining 11,000 TPS in
+            aggregate (1B+ transactions/day), designed a real-time transaction indexer capturing full on-chain state
+            across all chains, and built an efficient query layer over the indexed data for throughput analysis. First
+            system to validate DA performance at this scale for Avail.
+          </li>
+
+          <li>
+            <strong>Rollup Integrations</strong> — Designed and implemented Avail DA adapters across leading rollup
+            stacks, enabling rollups to replace Ethereum calldata with Avail DA through pluggable interfaces.
+            <ul class="stack-list" style="margin-top:12px;">
+              <li><span class="stack-name">OP-Stack</span>
+                <a
+                  href="https://github.com/availproject/avail-op-stack-adapter/tree/avail-develop">avail-op-stack-adapter</a>
+                <a
+                  href="https://docs.availproject.org/docs/build-with-avail/deploy-rollup-on-avail/Optimium/op-stack/op-stack">docs</a>
+              </li>
+              <li><span class="stack-name">Arbitrum Nitro</span>
+                <a
+                  href="https://github.com/availproject/avail-nitro-adapter/tree/avail-nitro-node-v2-upstream-v3.2.1">avail-nitro-adapter</a>
+                <a href="https://github.com/availproject/nitro-contracts">nitro-contracts</a>
+                <a
+                  href="https://docs.availproject.org/docs/build-with-avail/deploy-rollup-on-avail/Optimium/arbitrum-nitro/nitro-stack">docs</a>
+              </li>
+              <li><span class="stack-name">Polygon CDK</span>
+                <a href="https://github.com/availproject/cdk">cdk</a>
+                <a href="https://github.com/availproject/cdk-zkevm-contracts">cdk-zkevm-contracts</a>
+                <a href="https://github.com/availproject/kurtosis-cdk">kurtosis-cdk</a>
+              </li>
+              <li><span class="stack-name">ZK Sync Era</span>
+                <a href="https://github.com/availproject/zksync-era">zksync-era</a>
+                <a href="https://github.com/availproject/era-contracts">era-contracts</a>
+              </li>
+              <li><span class="stack-name">Sovereign SDK</span>
+                <a href="https://github.com/availproject/avail-sovereign-sdk/tree/avail-develop">avail-sovereign-sdk</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <strong>Upstream Protocol Contributions</strong> — Core DA interface changes merged upstream into canonical
+            repositories:
+            <a href="https://github.com/OffchainLabs/nitro/pull/2666">OffchainLabs/nitro #2666</a> and
+            <a href="https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709">Sovereign-Labs/sovereign-sdk #1709</a> —
+            enabling modular DA support without forking base protocol implementations.
+          </li>
+
+          <li>
+            <strong>Production Rollup Adoption</strong> — Built DA integration and Solidity verifier contracts enabling
+            Avail DA attestations in the proof settlement pipeline. Adopted by:
+            <div class="l2-badges" style="margin-top:8px;">
+              <a class="l2-badge" href="https://l2beat.com/scaling/projects/sxt#contracts">Space and Time (SxT)</a>
+              <a class="l2-badge" href="https://l2beat.com/scaling/projects/sophon">Sophon</a>
+              <a class="l2-badge" href="https://l2beat.com/scaling/projects/lens">Lens</a>
+            </div>
+          </li>
+
+          <li>
+            <strong>Smart Contract Infrastructure</strong> — Implemented Solidity verifier contracts across Arbitrum
+            Nitro, Polygon CDK, and ZK Sync Era (diamond proxy architecture) to validate Avail DA commitments within
+            rollup settlement pipelines.
+          </li>
+
+          <li>
+            <strong>Distributed Cross-Chain Payment Backend — Avail Nexus</strong> — Extended a Go-based distributed
+            backend in <a href="https://github.com/availproject/ca-node">ca-node</a> for the Nexus chain abstraction
+            protocol — adding fee grant flows, sponsored approvals, RFF publishing, cross-chain balance queries, and
+            threshold signature generation via MPC using secp256k1 and ed25519. Involved distributed state consistency,
+            cryptographic key management, and fault-tolerant multi-step transaction coordination across chains.
+          </li>
+
+          <li>
+            <strong>Browser-Native Verification Module (Rust → WASM)</strong> — Ported DA sampling and block
+            verification logic from the <a href="https://github.com/availproject/avail-light/tree/main">Avail light
+              client</a> into a WASM module — enabling browser-native chain verification without a native binary.
+            Required WASM-safe Rust, careful memory boundary reasoning, and execution environment constraint analysis.
+            Extended DA verification reach to web clients and dApps without rewriting core logic.
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Polygon Labs -->
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <div class="company">Polygon Labs</div>
+            <div class="role">Backend Engineer · Remote, India</div>
+          </div>
+          <div class="period">Dec 2022 — Aug 2023</div>
+        </div>
+        <ul class="bullets">
+          <li>
+            <strong>Polygon PoS Open APIs</strong> — Implemented and hardened validation logic for public-facing Polygon
+            PoS APIs in NodeJS, covering malformed inputs and rate limits. Wrote unit tests with Mocha/Chai and ran K6
+            load simulations, identifying bottlenecks under high-concurrency traffic.
+          </li>
+          <li>
+            <strong>Watchgod — Real-Time Transaction Pipeline</strong> — Designed and built a low-latency event-driven
+            transaction status service for Polygon PoS using Node.js, MongoDB, Redis pub/sub, and Blocknative Webhooks —
+            replacing a polling-based model with a fully event-driven architecture, eliminating unnecessary RPC load and
+            reducing user-visible confirmation latency.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OPEN SOURCE -->
+    <section>
+      <div class="section-label">Open Source Contributions</div>
+      <div class="oss-grid">
+
+        <div class="oss-card">
+          <div class="oss-card-title"><a
+              href="https://github.com/availproject/avail-op-stack-adapter">avail-op-stack-adapter</a></div>
+          <div class="oss-tags"><span class="oss-tag">Golang</span><span class="oss-tag">Solidity</span><span
+              class="oss-tag">OP-Stack</span></div>
+          <div class="oss-desc">Pluggable DA adapter for OP-Stack rollups to switch from Ethereum calldata to Avail DA.
+            Implements OP-Stack's <code
+              style="font-family: JetBrains Mono; font-size:11px; color: #7a7a88;">AltDA</code> interface with
+            Avail-native block submission and commitment retrieval.</div>
+        </div>
+
+        <div class="oss-card">
+          <div class="oss-card-title"><a
+              href="https://github.com/availproject/avail-nitro-adapter">avail-nitro-adapter</a></div>
+          <div class="oss-tags"><span class="oss-tag">Golang</span><span class="oss-tag">Solidity</span><span
+              class="oss-tag">Arbitrum Nitro</span></div>
+          <div class="oss-desc">DA adapter replacing the Ethereum AnyTrust committee with Avail DA for Orbit chains.
+            Includes on-chain verifier contracts in <a
+              href="https://github.com/availproject/nitro-contracts">nitro-contracts</a> and orbit-actions for automated
+            deployment.
+            <a class="upstream-badge" href="https://github.com/OffchainLabs/nitro/pull/2666">merged upstream ↗</a>
+          </div>
+        </div>
+
+        <div class="oss-card">
+          <div class="oss-card-title"><a href="https://github.com/availproject/cdk">cdk (Polygon CDK)</a></div>
+          <div class="oss-tags"><span class="oss-tag">Golang</span><span class="oss-tag">Solidity</span><span
+              class="oss-tag">ZK-EVM</span></div>
+          <div class="oss-desc">Extended Polygon CDK's DA module for validium chains. Wrote <a
+              href="https://github.com/availproject/cdk-zkevm-contracts">cdk-zkevm-contracts</a> Solidity contracts to
+            register Avail DA commitments within the ZK-EVM proof settlement system.</div>
+        </div>
+
+        <div class="oss-card">
+          <div class="oss-card-title"><a href="https://github.com/availproject/zksync-era">zksync-era</a></div>
+          <div class="oss-tags"><span class="oss-tag">Rust</span><span class="oss-tag">Solidity</span><span
+              class="oss-tag">ZK Sync Era</span></div>
+          <div class="oss-desc">Modified ZK Sync Era's sequencer and proof pipeline to post DA to Avail. Extended <a
+              href="https://github.com/availproject/era-contracts">era-contracts</a> (diamond proxy architecture) for
+            on-chain DA attestation verification. Adopted by SxT, Sophon, and Lens.</div>
+        </div>
+
+        <div class="oss-card">
+          <div class="oss-card-title"><a
+              href="https://github.com/availproject/avail-sovereign-sdk">avail-sovereign-sdk</a></div>
+          <div class="oss-tags"><span class="oss-tag">Rust</span><span class="oss-tag">Sovereign SDK</span></div>
+          <div class="oss-desc">Avail DA adapter for Sovereign SDK rollups in Rust, enabling sovereign ZK rollups to use
+            Avail's erasure-coded DA without a settlement layer dependency.
+            <a class="upstream-badge" href="https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709">merged upstream
+              ↗</a>
+          </div>
+        </div>
+
+        <div class="oss-card">
+          <div class="oss-card-title"><a href="https://github.com/availproject/ca-node">ca-node (Avail Nexus)</a></div>
+          <div class="oss-tags"><span class="oss-tag">Golang</span><span class="oss-tag">TSS</span><span
+              class="oss-tag">WebSocket</span></div>
+          <div class="oss-desc">Core node for Avail's Nexus chain abstraction protocol. Extended the VSC backend for
+            cross-chain operations including fee grants, RFF publishing, and threshold signature generation (secp256k1 /
+            ed25519).</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section>
+      <div class="section-label">Technical Skills</div>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <div class="skill-cat">Languages</div>
+          <div class="skill-items">
+            <span class="skill-pill highlight">Golang</span>
+            <span class="skill-pill highlight">Rust</span>
+            <span class="skill-pill highlight">Solidity</span>
+            <span class="skill-pill">TypeScript</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">SQL</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-cat">Backend &amp; Systems</div>
+          <div class="skill-items">
+            <span class="skill-pill">Distributed systems</span>
+            <span class="skill-pill">Event-driven architecture</span>
+            <span class="skill-pill">gRPC</span>
+            <span class="skill-pill">REST</span>
+            <span class="skill-pill">WebSockets</span>
+            <span class="skill-pill">pub/sub</span>
+            <span class="skill-pill">WASM</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-cat">Rollup Infrastructure</div>
+          <div class="skill-items">
+            <span class="skill-pill highlight">OP-Stack</span>
+            <span class="skill-pill highlight">Arbitrum Nitro</span>
+            <span class="skill-pill highlight">Polygon CDK</span>
+            <span class="skill-pill highlight">ZK Sync Era</span>
+            <span class="skill-pill">Sovereign SDK</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-cat">Blockchain Systems</div>
+          <div class="skill-items">
+            <span class="skill-pill">go-ethereum (Geth)</span>
+            <span class="skill-pill">libp2p</span>
+            <span class="skill-pill">gRPC</span>
+            <span class="skill-pill">Substrate</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-cat">ZK & Cryptography</div>
+          <div class="skill-items">
+            <span class="skill-pill">KZG commitments</span>
+            <span class="skill-pill">Erasure coding</span>
+            <span class="skill-pill">ZK-EVM architecture</span>
+            <span class="skill-pill">TSS / secp256k1 / ed25519</span>
+            <span class="skill-pill">WASM</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-cat">Smart Contracts</div>
+          <div class="skill-items">
+            <span class="skill-pill highlight">Solidity</span>
+            <span class="skill-pill">Foundry</span>
+            <span class="skill-pill">Hardhat</span>
+            <span class="skill-pill">Diamond Proxy (EIP-2535)</span>
+            <span class="skill-pill">OpenZeppelin</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-cat">Infrastructure</div>
+          <div class="skill-items">
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">Kurtosis</span>
+            <span class="skill-pill">Redis</span>
+            <span class="skill-pill">MongoDB</span>
+            <span class="skill-pill">Kafka</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <div class="section-label">Education</div>
+      <div class="edu-block">
+        <div>
+          <div class="edu-name">ABV-IIITM Gwalior</div>
+          <div class="edu-degree">B.Tech (IT) + MBA Integrated Program · Gwalior, India</div>
+        </div>
+        <div class="edu-meta">
+          <div class="edu-period">2018 — 2023</div>
+          <div class="edu-cgpa">CGPA 7.4 / 10</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
 </body>
+
 </html>

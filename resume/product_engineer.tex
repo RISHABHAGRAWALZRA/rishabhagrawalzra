@@ -1,0 +1,182 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez (base) — Enhanced v3
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-2pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Rishabh Agrawal} \\ \vspace{1pt}
+    \small +91 8989436401 $|$
+    \href{mailto:rishabhagrawalzra@gmail.com}{\underline{rishabhagrawalzra@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/rishabhagrawalzra/}{\underline{LinkedIn}} $|$
+    \href{https://github.com/RISHABHAGRAWALZRA}{\underline{GitHub}} $|$
+    \href{https://x.com/rsh_agrawal}{\underline{X (Twitter)}} $|$ Dubai (UAE)
+\end{center}
+
+%-----------PROFESSIONAL SUMMARY-----------
+\section{Professional Summary}
+\small
+Product engineer and ecosystem builder with 4+ years at the infrastructure layer of onchain systems. At Avail, led integrations adopted by \textbf{7+ production networks} — partnering directly with L2 teams (Sophon, Lens, Space and Time) from technical scoping through go-live and growth. Deep hands-on knowledge of rollup architecture, smart contract systems, and DeFi primitives, combined with a track record of turning protocol capabilities into real partner adoption. Looking to bring this builder-plus-ecosystem lens to Symbiotic's collateral and restaking infrastructure.
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+  {\href{https://www.availproject.org/}{Avail Project}}{Remote, India}
+  {Product Engineer — L2 Protocol \& Ecosystem}{Aug 2023 -- Mar 2026}
+  \resumeItemListStart
+
+    \resumeItem{\textbf{Partner Onboarding \& Integration Support (7+ L2s):} Acted as the primary technical partner for L2 teams integrating Avail's DA layer — scoping integration requirements, unblocking issues across sequencer, proof, and contract layers, and coordinating across internal product, research, and DevRel to get partners live. Integrations now independently verified on \href{https://l2beat.com}{L2Beat} for \textbf{Sophon}, \textbf{Lens}, and \textbf{Space and Time (SxT)}, with broader production adoption by Nexus Network, Ternoa, Soon, and Rooch.}
+
+    \resumeItem{\textbf{Ecosystem Pipeline \& Go-to-Market Coordination:} Maintained visibility across all active and pipeline integrations — identifying blockers, aligning on timelines, and coordinating launches with marketing and ecosystem teams. Helped structure partner opportunities to maximize adoption and liquidity flow into Avail-powered systems.}
+
+    \resumeItem{\textbf{Multi-Stack Protocol Integrations (5 Rollup Frameworks):} Designed and shipped production integrations across OP-Stack, Arbitrum Nitro, Polygon CDK, ZK Sync Era, and Sovereign SDK — enabling any L2 built on these stacks to plug in Avail's DA layer with minimal ($<$500 lines) core changes. Delivered end-to-end: adapters, on-chain contracts, deployment SDKs, and local environments.}
+    \begin{itemize}
+      \item \textbf{OP-Stack} — \href{https://github.com/availproject/avail-op-stack-adapter}{\textbf{op-stack adapter (Go)}}, \href{https://docs.availproject.org/docs/build-with-avail/deploy-rollup-on-avail/Optimium/op-stack/op-stack}{\textbf{docs}}
+      \item \textbf{Arbitrum Nitro} — \href{https://github.com/availproject/avail-nitro-adapter}{\textbf{nitro adapter (Go)}}, \href{https://github.com/availproject/nitro-contracts}{\textbf{verifier contracts}}, \href{https://github.com/availproject/arbitrum-orbit-sdk}{\textbf{orbit-sdk}}; \href{https://github.com/OffchainLabs/nitro/pull/2666}{\textbf{PR merged upstream into OffchainLabs/nitro}}
+      \item \textbf{Polygon CDK} — \href{https://github.com/availproject/cdk}{\textbf{cdk (Go)}}, \href{https://github.com/availproject/cdk-zkevm-contracts}{\textbf{zk-evm contracts}}, \href{https://github.com/availproject/kurtosis-cdk}{\textbf{kurtosis-cdk}}
+      \item \textbf{ZK Sync Era} — \href{https://github.com/availproject/zksync-era}{\textbf{zksync-era (Rust)}}, \href{https://github.com/availproject/era-contracts}{\textbf{era-contracts (diamond proxy)}}; adopted by Sophon, Lens, SxT
+      \item \textbf{Sovereign SDK} — \href{https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709}{\textbf{PR merged upstream}} into \texttt{Sovereign-Labs/sovereign-sdk}
+    \end{itemize}
+
+    \resumeItem{\textbf{Smart Contract Architecture for Partner Deployments:} Designed and shipped on-chain verifier contracts across three distinct architectures (Arbitrum AnyTrust committee model, Polygon CDK validium settlement, ZK Sync Era EIP-2535 diamond proxy) — giving each partner a production-ready, auditable settlement path without requiring custom forks.}
+
+    \resumeItem{\textbf{Cross-Chain Infrastructure (Nexus Protocol):} Extended the Go-based Validator Service Client (VSC) for the Nexus chain abstraction protocol, adding \textbf{6+ new cross-chain endpoints} covering balance queries, fee grants, RFF publishing, sponsored approvals, and threshold signature generation (secp256k1 + ed25519).}
+
+  \resumeItemListEnd
+
+\vspace{4pt}
+
+\resumeSubheading
+  {Polygon Labs}{Remote, India}
+  {Backend Engineer}{Dec 2022 -- Aug 2023}
+  \resumeItemListStart
+
+    \resumeItem{\textbf{Polygon PoS Public APIs:} Hardened validation and error-handling logic for high-traffic Polygon PoS public APIs in Node.js; wrote full unit test coverage (Mocha/Chai) and ran load simulations with K6, identifying and resolving throughput bottlenecks under high-concurrency workloads.}
+
+    \resumeItem{\textbf{Watchgod — Real-time Transaction Monitor:} Designed and built a real-time transaction status service for Polygon PoS using Node.js, MongoDB, Redis, and Blocknative Webhooks. Replaced polling-based confirmation checks with an \textbf{event-driven webhook architecture}, reducing user-visible confirmation latency and eliminating unnecessary RPC polling load on the network.}
+
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------OPEN SOURCE CONTRIBUTIONS-----------
+\section{Open Source Contributions}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{Arbitrum Nitro} $|$ \emph{Golang, Solidity} $|$ AnyTrust DA module + upstream PR $|$ \href{https://github.com/OffchainLabs/nitro/pull/2666}{\underline{upstream PR}}, \href{https://github.com/availproject/avail-nitro-adapter}{\underline{adapter}}}{}
+    \resumeItemListStart
+      \resumeItem{Extended Arbitrum Nitro's AnyTrust DA module to support pluggable DA backends for Orbit chains. \href{https://github.com/OffchainLabs/nitro/pull/2666}{\textbf{Core interface changes merged into OffchainLabs/nitro}}. Shipped on-chain verifier contracts, deployment SDK, ArbOS upgrade tooling, and setup scripts for streamlined Orbit chain deployment.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{ZK Sync Era} $|$ \emph{Rust, Solidity} $|$ Sequencer + diamond proxy modification $|$ \href{https://github.com/availproject/zksync-era}{\underline{zksync-era}}, \href{https://github.com/availproject/era-contracts}{\underline{era-contracts}} $|$ \textbf{3 chains on L2Beat}}{}
+    \resumeItemListStart
+      \resumeItem{Modified ZK Sync Era's sequencer and proof generation pipeline to post DA externally. Extended \texttt{era-contracts} (EIP-2535 diamond proxy architecture) to verify DA attestations on-chain during proof settlement. Highest-impact integration: adopted by \textbf{Sophon, Lens, and Space and Time (SxT)}, all independently verified on L2Beat.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{OP-Stack} $|$ \emph{Golang, Solidity} $|$ AltDA interface implementation $|$ \href{https://github.com/availproject/avail-op-stack-adapter}{\underline{repo}}, \href{https://docs.availproject.org/docs/build-with-avail/deploy-rollup-on-avail/Optimium/op-stack/op-stack}{\underline{docs}}}{}
+    \resumeItemListStart
+      \resumeItem{Implemented OP-Stack's \texttt{AltDA} pluggable interface to support external DA backends. Handles blob submission, commitment retrieval, and derivation pipeline compatibility — requiring no changes to the rollup's core sequencer or fraud proof logic.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Sovereign SDK} $|$ \emph{Rust} $|$ DA adapter — \href{https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709}{\underline{PR merged into Sovereign-Labs/sovereign-sdk}}}{}
+    \resumeItemListStart
+      \resumeItem{Built a DA adapter for sovereign ZK rollups in Rust. \textbf{PR merged into the canonical Sovereign-Labs/sovereign-sdk repository} — enabling sovereign rollups to use erasure-coded DA without a settlement layer dependency.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{\item{
+    \textbf{DeFi \& Protocol Knowledge:} Restaking, collateral markets, modular DA, ZK proof settlement, rollup economics, smart contract architecture \\
+    \textbf{Rollup Infrastructure:} OP-Stack, Arbitrum Nitro, Polygon CDK, ZK Sync Era, Sovereign SDK \\
+    \textbf{Languages:} Golang, Rust, Solidity, TypeScript, JavaScript \\
+    \textbf{Smart Contracts:} Solidity, Foundry, Hardhat, OpenZeppelin, Diamond Proxy (EIP-2535) \\
+    \textbf{Blockchain Systems:} go-ethereum (Geth), libp2p, gRPC, ZK-EVM architecture, KZG commitments \\
+    \textbf{Infrastructure \& Tooling:} Docker, Kurtosis, Redis, MongoDB, Kafka
+  }}
+\end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {ABV-IIITM Gwalior}{Gwalior, India}
+    {B.Tech (IT) + MBA Integrated Program}{2018 -- 2023}
+\resumeSubHeadingListEnd
+
+\end{document}

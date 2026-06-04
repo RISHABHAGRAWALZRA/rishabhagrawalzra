@@ -1,0 +1,194 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez (base) — Senior Software Engineer, Blockchain Edition
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-2pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Rishabh Agrawal} \\ \vspace{1pt}
+    \small +91 8989436401 $|$
+    \href{mailto:rishabhagrawalzra@gmail.com}{\underline{rishabhagrawalzra@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/rishabhagrawalzra/}{\underline{LinkedIn}} $|$
+    \href{https://github.com/RISHABHAGRAWALZRA}{\underline{GitHub}} $|$
+    \href{https://x.com/rsh_agrawal}{\underline{X (Twitter)}}
+\end{center}
+
+%-----------PROFESSIONAL SUMMARY-----------
+\section{Professional Summary}
+\small
+Senior software engineer with 4+ years building \textbf{production backend and blockchain infrastructure in Go, Rust and typescript} — owning architecture, implementation, and production reliability end-to-end. Designed systems sustaining \textbf{11,000 TPS (1B+ transactions/day)}, shipped protocol-level integrations across \textbf{OP-Stack, Arbitrum Nitro, Polygon CDK, ZK Sync Era, and Sovereign SDK} adopted by \textbf{7+ production L2s}, and contributed upstream changes merged directly into \textbf{OffchainLabs/nitro} and \textbf{Sovereign-Labs/sovereign-sdk}. Operates comfortably at every layer — distributed Go backends, Rust sequencer internals, ZK proof pipelines, Solidity settlement contracts, and cross-chain cryptographic signing systems.
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+  {\href{https://www.availproject.org/}{Avail Project}}{Remote, India}
+  {Senior Software Engineer — Backend \& Blockchain Infrastructure}{Aug 2023 -- Mar 2026}
+  \resumeItemListStart
+
+    \resumeItem{\textbf{High-Throughput EVM Pipeline — 11K TPS / 1B tx/day:} Owned end-to-end design and implementation of a large-scale EVM benchmarking system — architected orchestration to \textbf{spin up and manage a distributed fleet of EVM chains}, built a concurrent transaction generation system sustaining \textbf{11,000 TPS in aggregate (1B+ transactions/day)}, designed a \textbf{real-time transaction indexer} capturing full on-chain state across all chains, and built an \textbf{efficient query layer} over the indexed data for throughput analysis. First system to validate DA performance at this scale for Avail.}
+
+    \resumeItem{\textbf{Protocol Integrations Across 5 L2 Stacks (Go + Rust):} Owned architecture and end-to-end delivery of modular DA integrations across \textbf{5 major L2 rollup stacks} — designing pluggable interfaces, modifying sequencer and proof pipeline internals, implementing on-chain verifier contracts, and shipping full deployment tooling. Each integration required independent design decisions, protocol-level tradeoff analysis, and production hardening. Adopted by \textbf{7+ production chains} including Sophon, Lens, and Space and Time (SxT), with 3 independently verified on \href{https://l2beat.com}{\textbf{L2Beat}}.}
+    \begin{itemize}
+      \item \textbf{OP-Stack (Go)} — \texttt{AltDA} interface implementation; \href{https://github.com/availproject/avail-op-stack-adapter}{\textbf{adapter}}, \href{https://docs.availproject.org/docs/build-with-avail/deploy-rollup-on-avail/Optimium/op-stack/op-stack}{\textbf{docs}}
+      \item \textbf{Arbitrum Nitro (Go)} — AnyTrust DA module extension; \href{https://github.com/availproject/avail-nitro-adapter}{\textbf{adapter}}, \href{https://github.com/availproject/nitro-contracts}{\textbf{verifier contracts}}, \href{https://github.com/availproject/arbitrum-orbit-sdk}{\textbf{orbit-sdk}}
+      \item \textbf{Polygon CDK (Go)} — Validium DA module; \href{https://github.com/availproject/cdk}{\textbf{cdk}}, \href{https://github.com/availproject/cdk-zkevm-contracts}{\textbf{zkevm-contracts}}, \href{https://github.com/availproject/kurtosis-cdk}{\textbf{kurtosis-cdk}}
+      \item \textbf{ZK Sync Era (Rust)} — Sequencer + proof pipeline; \href{https://github.com/availproject/zksync-era}{\textbf{zksync-era}}, \href{https://github.com/availproject/era-contracts}{\textbf{era-contracts (EIP-2535)}}
+      \item \textbf{Sovereign SDK (Rust)} — DA adapter; \href{https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709}{\textbf{PR merged upstream}}
+    \end{itemize}
+
+    \resumeItem{\textbf{Distributed Cross-Chain Payment Backend — Avail Nexus (Go):} Extended a \textbf{Go-based distributed backend} for the Nexus chain abstraction protocol — adding fee grant flows, sponsored approvals, RFF publishing, cross-chain balance queries and threshold signature generation via MPC using secp256k1 and ed25519. Involved distributed state consistency, cryptographic key management, and fault-tolerant multi-step transaction coordination across chains.}
+
+    \resumeItem{\textbf{Upstream Protocol Contributions — OffchainLabs/nitro \& Sovereign-Labs/sovereign-sdk:} Identified missing interface abstractions in two canonical protocol repositories, designed backward-compatible solutions, and \textbf{merged changes directly into \href{https://github.com/OffchainLabs/nitro/pull/2666}{OffchainLabs/nitro} and \href{https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709}{Sovereign-Labs/sovereign-sdk}} — enabling modular DA support at the protocol level without requiring downstream forks. Both contributions are in active use by third-party chains.}
+
+    
+
+    \resumeItem{\textbf{Browser-Native Verification Module (Rust → WASM):} Ported DA sampling and block verification logic from a \textbf{Rust light client into a WASM module} — enabling browser-native chain verification without a native binary. Required WASM-safe Rust, careful memory boundary reasoning, and execution environment constraint analysis. Extended DA verification reach to web clients and dApps without rewriting core logic.}
+
+  \resumeItemListEnd
+
+\vspace{4pt}
+
+\resumeSubheading
+  {Polygon Labs}{Remote, India}
+  {Backend Engineer}{Dec 2022 -- Aug 2023}
+  \resumeItemListStart
+
+    \resumeItem{\textbf{Watchgod — Real-Time Transaction Pipeline:} Designed and built a \textbf{low-latency event-driven transaction status service} for Polygon PoS using Node.js, MongoDB, \textbf{Redis pub/sub}, and Blocknative Webhooks — replacing a polling-based model with a fully event-driven architecture, eliminating unnecessary RPC load and reducing user-visible confirmation latency.}
+
+    \resumeItem{\textbf{Polygon PoS Public APIs:} Hardened validation, rate limiting, and error-handling for high-traffic public-facing REST APIs in Node.js. Wrote full unit test coverage (Mocha/Chai) and ran \textbf{K6 load simulations} to identify and resolve throughput bottlenecks under sustained concurrent traffic.}
+
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------OPEN SOURCE CONTRIBUTIONS-----------
+\section{Open Source Contributions}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{Arbitrum Nitro: OffchainLabs/nitro} $|$ \emph{Golang} $|$ \href{https://github.com/OffchainLabs/nitro/pull/2666}{\underline{Upstream PR merged}} $|$ Modular DA interface abstraction}{}
+    \resumeItemListStart
+      \resumeItem{Designed and contributed a modular DA interface into the canonical Arbitrum Nitro repository — enabling pluggable external DA backends without requiring downstream forks of the base protocol.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Sovereign SDK: Sovereign-Labs/sovereign-sdk} $|$ \emph{Rust} $|$ \href{https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709}{\underline{Upstream PR merged}} $|$ Rust DA adapter}{}
+    \resumeItemListStart
+      \resumeItem{Built and contributed a pluggable DA adapter into the canonical Sovereign SDK repository — enabling sovereign ZK rollups to use erasure-coded DA without a settlement layer dependency. In active use by third-party sovereign chains.}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+    {\textbf{Polygon CDK} $|$ \emph{Golang, Solidity} $|$ Validium DA module + ZK-EVM verifier $|$ \href{https://github.com/availproject/cdk}{\underline{cdk}}, \href{https://github.com/availproject/cdk-zkevm-contracts}{\underline{contracts}}}{}
+    \resumeItemListStart
+      \resumeItem{Extended Polygon CDK's DA module interface for validium chains. Wrote ZK-EVM verifier contracts to register DA commitments in the proof settlement system. Built a Kurtosis-based deployment environment enabling one-command CDK chain setup with Avail DA preconfigured.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{ZK Sync Era} $|$ \emph{Rust, Solidity} $|$ \href{https://github.com/availproject/zksync-era}{\underline{zksync-era}}, \href{https://github.com/availproject/era-contracts}{\underline{era-contracts}} $|$ \textbf{3 production chains on L2Beat}}{}
+    \resumeItemListStart
+      \resumeItem{Modified ZK Sync Era's sequencer and proof pipeline (Rust) for modular DA. Extended \texttt{era-contracts} (EIP-2535 diamond proxy) with on-chain DA attestation verifier. Adopted by Sophon, Lens, and Space and Time (SxT) — all independently verified on L2Beat.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{OP-Stack} $|$ \emph{Golang, Solidity} $|$ DA adapters + deployment tooling}{}
+    \resumeItemListStart
+      \resumeItem{Owned design and delivery of Go-based DA adapters, on-chain verifier contracts, deployment SDKs, and operator documentation for three major rollup stacks. Full self-serve deployment coverage for each stack.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{\item{
+    \textbf{Languages:} Golang, Rust, Solidity, TypeScript, JavaScript, SQL \\
+    
+    \textbf{Backend \& Systems:} Distributed systems, event-driven architecture, gRPC, REST, WebSockets, pub/sub, WASM \\
+    \textbf{Data \& Infra:} Redis, MongoDB, Kafka, Docker, Kurtosis, K6 \\
+    \textbf{Blockchain \& Protocol:} OP-Stack, Arbitrum Nitro, Polygon CDK, ZK Sync Era, Sovereign SDK, go-ethereum (Geth), libp2p, Substrate \\
+    \textbf{Smart Contracts:} Solidity, Foundry, Hardhat, OpenZeppelin, Diamond Proxy (EIP-2535) \\
+    
+    
+    \textbf{ZK \& Cryptography:} ZK-EVM architecture, KZG commitments, erasure coding, proof verification, MPC, threshold signatures, secp256k1, ed25519 \\
+    
+  }}
+\end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {ABV-IIITM Gwalior}{Gwalior, India}
+    {B.Tech (IT) + MBA Integrated Program}{2018 -- 2023}
+\resumeSubHeadingListEnd
+
+\end{document}

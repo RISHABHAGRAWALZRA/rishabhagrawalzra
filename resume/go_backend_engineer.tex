@@ -1,0 +1,190 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez (base) — Golang Backend / Protocol Engineering Edition
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-2pt}}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Rishabh Agrawal} \\ \vspace{1pt}
+    \small +91 8989436401 $|$
+    \href{mailto:rishabhagrawalzra@gmail.com}{\underline{rishabhagrawalzra@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/rishabhagrawalzra/}{\underline{LinkedIn}} $|$
+    \href{https://github.com/RISHABHAGRAWALZRA}{\underline{GitHub}} $|$
+    \href{https://x.com/rsh_agrawal}{\underline{X (Twitter)}}
+\end{center}
+
+%-----------PROFESSIONAL SUMMARY-----------
+\section{Professional Summary}
+\small
+Blockchain and Backend engineer with 4+ years building \textbf{high-throughput, event-driven distributed systems in Go} at the intersection of off-chain services and on-chain protocols. At Avail, designed and shipped production Go backend services integrating with \textbf{5 major L2 rollup stacks}, built load generation infrastructure sustaining \textbf{11,000 TPS (1B+ transactions/day)} across a fleet of EVM chains with a custom indexer and query layer, and contributed upstream Go interface changes merged into \textbf{OffchainLabs/nitro}. At Polygon Labs, built real-time event-driven transaction pipelines and hardened high-traffic public APIs under load. Strong foundation in \textbf{cryptographic systems} (MPC, threshold signatures, secp256k1/ed25519, KZG commitments), distributed systems design, and off-chain/on-chain integration patterns.
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+  {\href{https://www.availproject.org/}{Avail Project}}{Remote, India}
+  {Integration Engineer — Go Backend \& Protocol Infrastructure}{Aug 2023 -- Mar 2026}
+  \resumeItemListStart
+
+   \resumeItem{\textbf{Off-Chain / On-Chain Integration (Go):} Designed and shipped production Go backend services managing the full DA transaction lifecycle across \textbf{5 L2 rollup stacks} — block submission, commitment retrieval, attestation verification, retry logic, and failure recovery — running against live blockchain networks with real uptime requirements. Adopted by \textbf{7+ production chains} including Sophon, Lens, and Space and Time (SxT), with 3 independently verified on L2Beat.}
+    \begin{itemize}
+      \item \textbf{OP-Stack} — Go \texttt{AltDA} interface; \href{https://github.com/availproject/avail-op-stack-adapter}{\textbf{adapter}}, \href{https://docs.availproject.org/docs/build-with-avail/deploy-rollup-on-avail/Optimium/op-stack/op-stack}{\textbf{docs}}
+      \item \textbf{Arbitrum Nitro} — Go AnyTrust DA module extension; \href{https://github.com/availproject/avail-nitro-adapter}{\textbf{adapter}}, \href{https://github.com/availproject/nitro-contracts}{\textbf{verifier contracts}}, \href{https://github.com/availproject/arbitrum-orbit-sdk}{\textbf{orbit-sdk}}
+      \item \textbf{Polygon CDK} — Go validium DA module; \href{https://github.com/availproject/cdk}{\textbf{cdk}}, \href{https://github.com/availproject/cdk-zkevm-contracts}{\textbf{zkevm-contracts}}, \href{https://github.com/availproject/kurtosis-cdk}{\textbf{kurtosis-cdk}}
+    \end{itemize}
+    
+    \resumeItem{\textbf{High-Throughput EVM Load Generation \& Indexing Pipeline (11K TPS / 1B tx/day):} Designed and built end-to-end benchmarking infrastructure to validate EVM throughput at scale — scripted orchestration to \textbf{spin up and maintain a fleet of parallel EVM chains}, developed a distributed transaction firing system sustaining \textbf{11,000 TPS (1B+ transactions/day)} in aggregate, built a \textbf{custom transaction indexer} to capture full on-chain state across all chains in real time, and exposed an \textbf{efficient query layer} for throughput analysis and reporting. Demonstrates ability to design high-throughput data pipelines and observability systems under real load.}
+
+   \resumeItem{\textbf{Distributed Backend — Cross-Chain Protocol (Go):} Extended the \textbf{Validator Service Client (VSC)}, a Go-based distributed backend supporting cross-chain operations at scale — balance queries, fee grants, RFF publishing, sponsored approvals, and \textbf{threshold signature generation via MPC} using secp256k1 and ed25519. Involves cryptographic key management, distributed state consistency, and fault-tolerant multi-step transaction flows directly analogous to financial protocol backends.}
+
+
+    \resumeItem{\textbf{Upstream Protocol Contribution — OffchainLabs/nitro (Go):} Designed core DA interface abstractions and \href{https://github.com/OffchainLabs/nitro/pull/2666}{\textbf{merged changes directly into the canonical OffchainLabs/nitro repository}} — enabling modular DA support at the protocol level without requiring full forks. Demonstrates ability to contribute to large production Go codebases at protocol depth.}
+
+    \resumeItem{\textbf{Smart Contract Infrastructure (Solidity):} Implemented on-chain verifier contracts across \textbf{3 distinct architectures} — Arbitrum Nitro (AnyTrust), Polygon CDK (validium), and ZK Sync Era (EIP-2535 diamond proxy) — to validate DA commitments in automated rollup proof settlement pipelines using Foundry and Hardhat.}
+
+    \resumeItem{\textbf{Browser-Native Verification (Go → WASM):} Ported core DA sampling and block verification logic from Go into a \textbf{browser-native WASM module}, enabling client-side verification without a native binary — demonstrating ability to reason across execution environments and system boundaries.}
+
+  \resumeItemListEnd
+
+\vspace{4pt}
+
+\resumeSubheading
+  {Polygon Labs}{Remote, India}
+  {Backend Engineer}{Dec 2022 -- Aug 2023}
+  \resumeItemListStart
+
+    \resumeItem{\textbf{Watchgod — Event-Driven Transaction Pipeline (Node.js):} Designed and built Watchgod, a low-latency real-time transaction status service for Polygon PoS using Node.js, MongoDB, \textbf{Redis pub/sub}, and Blocknative Webhooks. Replaced a polling-based architecture with an \textbf{event-driven model}, reducing confirmation latency for end users and dApps. Architected for high-concurrency traffic with Redis as a caching and state management layer.}
+
+    \resumeItem{\textbf{High-Traffic Public APIs (Node.js):} Hardened validation and error-handling logic for public-facing Polygon PoS REST APIs — malformed inputs, rate limiting, concurrent request handling. Wrote full unit test coverage (Mocha/Chai) and ran K6 load simulations to identify and resolve throughput bottlenecks under sustained high-concurrency traffic.}
+
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------OPEN SOURCE CONTRIBUTIONS-----------
+\section{Open Source Contributions}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{OP-Stack} $|$ \emph{\textbf{Golang}, Solidity} $|$ AltDA interface implementation $|$ \href{https://github.com/availproject/avail-op-stack-adapter}{\underline{repo}}, \href{https://docs.availproject.org/docs/build-with-avail/deploy-rollup-on-avail/Optimium/op-stack/op-stack}{\underline{docs}}}{}
+    \resumeItemListStart
+      \resumeItem{Go backend adapter implementing OP-Stack's \texttt{AltDA} interface — handles blob submission, commitment retrieval, and derivation pipeline compatibility. No changes required to the rollup's core sequencer or fraud proof logic.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Arbitrum Nitro} $|$ \emph{\textbf{Golang}, Solidity} $|$ AnyTrust DA module + upstream PR $|$ \href{https://github.com/OffchainLabs/nitro/pull/2666}{\underline{upstream PR}}, \href{https://github.com/availproject/avail-nitro-adapter}{\underline{adapter}}}{}
+    \resumeItemListStart
+      \resumeItem{Go backend service extending Arbitrum Nitro's AnyTrust DA module for pluggable external DA. \textbf{Core Go interface changes merged into OffchainLabs/nitro}. Shipped with on-chain verifier contracts, deployment SDK, and ArbOS upgrade tooling.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Polygon CDK} $|$ \emph{\textbf{Golang}, Solidity} $|$ Validium DA module $|$ \href{https://github.com/availproject/cdk}{\underline{cdk}}, \href{https://github.com/availproject/cdk-zkevm-contracts}{\underline{contracts}}, \href{https://github.com/availproject/kurtosis-cdk}{\underline{kurtosis-cdk}}}{}
+    \resumeItemListStart
+      \resumeItem{Extended Polygon CDK's Go DA module interface for validium chains. ZK-EVM verifier contracts for proof settlement and Kurtosis-based environment for automated one-command chain deployment.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{ZK Sync Era} $|$ \emph{Rust, Solidity} $|$ Sequencer + diamond proxy modification $|$ \href{https://github.com/availproject/zksync-era}{\underline{zksync-era}} $|$ \textbf{3 chains on L2Beat}}{}
+    \resumeItemListStart
+      \resumeItem{Modified ZK Sync Era's Rust sequencer and proof pipeline for external DA. Extended \texttt{era-contracts} (EIP-2535 diamond proxy) with on-chain attestation verifier. Adopted by Sophon, Lens, and SxT — all verified on L2Beat.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Sovereign SDK} $|$ \emph{Rust} $|$ DA adapter — \href{https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709}{\underline{PR merged into Sovereign-Labs/sovereign-sdk}}}{}
+    \resumeItemListStart
+      \resumeItem{Rust DA adapter for sovereign ZK rollups. \textbf{PR merged into the canonical Sovereign-Labs/sovereign-sdk repository}, enabling erasure-coded DA without a settlement layer dependency.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{\item{
+    \textbf{Primary Language:} \textbf{Golang} (distributed services, protocol backends, CLI tooling, gRPC, REST) \\
+    \textbf{Secondary Languages:} Rust, Solidity, TypeScript, JavaScript, SQL \\
+    \textbf{Backend \& Systems:} Event-driven architectures, distributed systems, microservices, pub/sub, REST, gRPC, WebSockets, high-concurrency design \\
+    \textbf{Cryptography:} MPC, threshold signatures, secp256k1, ed25519, KZG commitments, erasure coding, key management \\
+    \textbf{Blockchain \& On-Chain:} go-ethereum (Geth), EVM, libp2p, Substrate, Solidity, Foundry, Hardhat, Diamond Proxy (EIP-2535) \\
+    \textbf{Rollup Infrastructure:} OP-Stack, Arbitrum Nitro, Polygon CDK, ZK Sync Era, Sovereign SDK \\
+    \textbf{Data \& Infra:} Redis, MongoDB, Kafka, Docker, Kurtosis, K6
+  }}
+\end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {ABV-IIITM Gwalior}{Gwalior, India}
+    {B.Tech (IT) + MBA Integrated Program}{2018 -- 2023}
+\resumeSubHeadingListEnd
+
+\end{document}

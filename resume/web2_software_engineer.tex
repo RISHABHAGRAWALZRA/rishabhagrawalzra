@@ -1,0 +1,155 @@
+%-------------------------
+% Rishabh Agrawal — Resume (Backend Engineering)
+%------------------------
+
+\documentclass[letterpaper,10.5pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{microtype}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+\pdfgentounicode=1
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\newcommand{\resumeItem}[1]{
+  \item\small{{#1 \vspace{-2pt}}}
+}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Rishabh Agrawal} \\ \vspace{1pt}
+    \small +91 8989436401 $|$
+    \href{mailto:rishabhagrawalzra@gmail.com}{\underline{rishabhagrawalzra@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/rishabhagrawalzra/}{\underline{LinkedIn}} $|$
+    \href{https://github.com/RISHABHAGRAWALZRA}{\underline{GitHub}} $|$
+    Remote, India
+\end{center}
+
+%-----------PROFESSIONAL SUMMARY-----------
+\section{Professional Summary}
+\small
+Software engineer with 3+ years building \textbf{production Go and Rust services} --- data pipelines, payment backends, and service integration libraries. Designed systems sustaining \textbf{11,000 events/second}, shipped backend services handling authorization flows, Kafka pipelines, and Redis-cached APIs, and delivered a Go library adopted across \textbf{5+ independent production stacks} with upstream contributions merged into two external open source repositories.
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {\href{https://www.availproject.org/}{Avail}}{Remote, India}
+    {Software Engineer --- Backend Infrastructure}{Aug 2023 -- Mar 2026}
+  \resumeItemListStart
+
+    \resumeItem{\textbf{Event Indexing Service (Go, PostgreSQL, gRPC, REST):} Designed and built from scratch a high-throughput event indexing service consuming a live RPC event stream from distributed nodes --- ingesting and persisting \textbf{11,000 events/second (1B+ events/day)} into PostgreSQL. Exposed a \textbf{gRPC API} for internal service consumers and a \textbf{REST API} for external dashboard queries. Sole owner from schema design and ingestion architecture through production deployment.}
+
+    \resumeItem{\textbf{Payment Platform Backend Service (Go, Kafka, Redis, PostgreSQL):} Extended and owned core subsystems of a Go backend service for a cross-network payment platform --- designed and implemented \textbf{sponsored authorization flows} handling fee estimation, transaction routing, and multi-step coordination across services; \textbf{cross-service balance query APIs} with Redis caching and pagination; and a \textbf{Kafka event publishing layer} for downstream service consumers. Applied rate limiting across public-facing endpoints. Deployed via Docker.}
+
+    \resumeItem{\textbf{Pluggable Integration Library (Go, Rust):} Designed and shipped a Go client library integrating an external data layer into \textbf{5+ independent microservice stacks} --- directly modifying sequencer, batch submission, and validation components across each codebase. Each integration involved graceful shutdown, job queues with \textbf{exponential backoff} retry logic, and inter-service communication over gRPC, WebSocket, and HTTP. Deployed and tested via Docker and Kurtosis. Upstream interface changes \href{https://github.com/OffchainLabs/nitro/pull/2666}{\textbf{merged into OffchainLabs/nitro}} and \href{https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709}{\textbf{Sovereign-Labs/sovereign-sdk}}.}
+
+  \resumeItemListEnd
+
+  \vspace{4pt}
+
+  \resumeSubheading
+    {Polygon Labs}{Remote, India}
+    {Backend Engineer}{Dec 2022 -- Aug 2023}
+  \resumeItemListStart
+
+    \resumeItem{\textbf{Real-Time Event-Driven Status Service (Node.js, Redis):} Designed and built a low-latency status streaming service --- replaced a polling-based architecture with a fully \textbf{event-driven pub/sub model} using Redis pub/sub and Blocknative webhook integrations, reducing end-user visible confirmation latency and eliminating unnecessary upstream polling load. Architected for high-concurrency traffic with Redis as the primary caching and state layer.}
+
+    \resumeItem{\textbf{High-Traffic Public REST APIs (Node.js):} Hardened validation, rate limiting, and error-handling for high-traffic public-facing APIs. Wrote full unit test coverage (Mocha/Chai) and ran \textbf{K6 load simulations} to identify and resolve throughput bottlenecks under sustained concurrent traffic.}
+
+  \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------SELECTED OPEN SOURCE CONTRIBUTIONS-----------
+\section{ Open Source Contributions}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{OffchainLabs/nitro} $|$ \emph{Go} $|$ \href{https://github.com/OffchainLabs/nitro/pull/2666}{\underline{PR merged}} $|$ }{}
+    \resumeItemListStart
+      \resumeItem{Designed and contributed a modular interface abstraction into the canonical Nitro repository, enabling pluggable third-party backend integrations without requiring downstream forks.}
+    \resumeItemListEnd
+ 
+  \resumeProjectHeading
+    {\textbf{Sovereign-Labs/sovereign-sdk} $|$ \emph{Rust} $|$ \href{https://github.com/Sovereign-Labs/sovereign-sdk/pull/1709}{\underline{PR merged}} $|$ }{}
+    \resumeItemListStart
+      \resumeItem{Built and contributed a pluggable backend adapter into the canonical Sovereign SDK in Rust. Merged upstream and in active use by independent third-party deployments.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{\item{
+    \textbf{Languages:} Go, Rust, TypeScript, JavaScript, SQL \\
+    \textbf{Backend \& Systems:} Distributed systems, REST APIs, gRPC, WebSockets, event-driven architecture, pub/sub, microservices, rate limiting, pagination, high-concurrency design \\
+    \textbf{Async \& Reliability:} Kafka, job queues, background workers, exponential backoff, graceful shutdown \\
+    \textbf{Data \& Storage:} PostgreSQL, Redis, MongoDB \\
+    \textbf{Infrastructure \& Tooling:} Docker, Kubernetes, Kurtosis, K6 load testing, CI/CD pipelines \\
+    \textbf{Runtimes:} WebAssembly (WASM), Linux
+  }}
+\end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {ABV-IIITM Gwalior}{Gwalior, India}
+    {B.Tech (IT) + MBA Integrated Program}{2018 -- 2023}
+\resumeSubHeadingListEnd
+
+\end{document}
